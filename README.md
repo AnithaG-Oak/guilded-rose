@@ -1,6 +1,19 @@
 # guilded-rose
 
 ======================================
+To run
+======================================
+Python has to be installed on the machine
+
+To run tests,
+
+pytest test_guilded_rose.py 
+
+To run the main program,
+
+python guilded_rose.py
+
+======================================
 Gilded Rose Requirements Specification
 ======================================
 
