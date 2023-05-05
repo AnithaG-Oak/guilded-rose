@@ -15,7 +15,11 @@ class GildedRoseTest(unittest.TestCase):
     def test_backstage_passes_quality(self):
         items = [
             Item("Backstage passes to a TAFKAL80ETC concert", 2, 30),
-            Item("Backstage passes to a TAFKAL80ETC concert", 0, 33)
+            Item("Backstage passes to a TAFKAL80ETC concert", 0, 33),
+            Item("Backstage passes to a TAFKAL80ETC concert", 11, 40),
+            Item("Backstage passes to a TAFKAL80ETC concert", 9, 12),
+            
+            Item("Backstage passes to a TAFKAL80ETC concert", 10, 12)
         ]
         update_quality(items)
         self.assertEqual("Backstage passes to a TAFKAL80ETC concert", items[0].name)
@@ -25,6 +29,18 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual("Backstage passes to a TAFKAL80ETC concert", items[1].name)
         self.assertEqual(0, items[1].quality)
         self.assertEqual(-1, items[1].sell_in)
+
+        self.assertEqual("Backstage passes to a TAFKAL80ETC concert", items[2].name)
+        self.assertEqual(41, items[2].quality)
+        self.assertEqual(10, items[2].sell_in)
+
+        self.assertEqual("Backstage passes to a TAFKAL80ETC concert", items[3].name)
+        self.assertEqual(14, items[3].quality)
+        self.assertEqual(8, items[3].sell_in)
+
+        self.assertEqual("Backstage passes to a TAFKAL80ETC concert", items[4].name)
+        self.assertEqual(14, items[4].quality)
+        self.assertEqual(9, items[4].sell_in)
 
     def test_non_special_item_quantity(self):
         items = [
@@ -78,6 +94,7 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual("Aged Brie", items[3].name)
         self.assertEqual(50, items[3].quality)
         self.assertEqual(-2, items[3].sell_in)
+
 
 if __name__ == "__main__":
     unittest.main()
