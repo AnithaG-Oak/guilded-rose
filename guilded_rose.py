@@ -14,6 +14,8 @@ def update_quality(items):
         if item.name not in [ItemName.AGED_BRIE.value, ItemName.BACKSTAGE_TAFKAL80ETC.value, ItemName.SULFURAS.value]:
             if item.quality > 0:
                 item.quality = item.quality - 1
+                
+
         else:
             # Special Item
             if item.quality < 50:
@@ -30,12 +32,15 @@ def update_quality(items):
         if item.name == ItemName.AGED_BRIE.value:
             if item.quality < 50 and item.sell_in < 0:
                 item.quality = item.quality + 1
-            
+         
+        if item.name not in [ItemName.AGED_BRIE.value, ItemName.BACKSTAGE_TAFKAL80ETC.value, ItemName.SULFURAS.value]:
+            if item.sell_in < 0 and item.quality > 0:
+                item.quality = item.quality - 1
+
         if item.sell_in < 0:
             if item.name != ItemName.AGED_BRIE.value:
                 if item.name != ItemName.BACKSTAGE_TAFKAL80ETC.value:
-                    if item.quality > 0 and item.name != ItemName.SULFURAS.value:
-                            item.quality = item.quality - 1
+                    pass
                 else:
                     item.quality = item.quality - item.quality
                 
