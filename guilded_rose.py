@@ -59,4 +59,7 @@ class AgedBrie(Item):
         
         if self.quality>50:
             self.quality=50 
+
+class BackstagePasses(Item):
+    pass
         

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import unittest
-from guilded_rose import AgedBrie, Item, Sulphuras, update_quality
+from guilded_rose import AgedBrie, BackstagePasses, Item, Sulphuras, update_quality
 
 
 class GildedRoseTest(unittest.TestCase):
@@ -21,12 +21,12 @@ class GildedRoseTest(unittest.TestCase):
 
     def test_backstage_passes_quality(self):
         items = [
-            Item("Backstage passes to a TAFKAL80ETC concert", 2, 30),
-            Item("Backstage passes to a TAFKAL80ETC concert", 0, 33),
-            Item("Backstage passes to a TAFKAL80ETC concert", 11, 40),
-            Item("Backstage passes to a TAFKAL80ETC concert", 9, 12),
-            Item("Backstage passes to a TAFKAL80ETC concert", 10, 12),
-            Item("Backstage passes to a TAFKAL80ETC concert", 10, 49)
+            BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 2, 30),
+            BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 0, 33),
+            BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 11, 40),
+            BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 9, 12),
+            BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 10, 12),
+            BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 10, 49)
         ]
         update_quality(items)
         self.assertEqual("Backstage passes to a TAFKAL80ETC concert", items[0].name)
