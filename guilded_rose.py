@@ -27,19 +27,11 @@ class Item:
     
         self.sell_in = self.sell_in - 1    
         
-        if self.name == "Backstage passes to a TAFKAL80ETC concert":
-            self.quality = self.quality + 1
-            if self.sell_in < 10:
-                self.quality = self.quality + 1
-            if self.sell_in < 5:
-                self.quality = self.quality + 1  
-            if self.sell_in < 0:
-                self.quality = 0 
-        else: 
-            if self.quality > 0:
-                self.quality = self.quality - 1 
-            if self.sell_in < 0 and self.quality > 0:
-                self.quality = self.quality - 1 
+        
+        if self.quality > 0:
+            self.quality = self.quality - 1 
+        if self.sell_in < 0 and self.quality > 0:
+            self.quality = self.quality - 1 
              
         if self.quality>50:
             self.quality=50 
@@ -61,5 +53,17 @@ class AgedBrie(Item):
             self.quality=50 
 
 class BackstagePasses(Item):
-    pass
+    def update(self):
+        self.sell_in = self.sell_in - 1
+        self.quality = self.quality + 1
+        if self.sell_in < 10:
+            self.quality = self.quality + 1
+        if self.sell_in < 5:
+            self.quality = self.quality + 1  
+        if self.sell_in < 0:
+            self.quality = 0 
+
+        if self.quality>50:
+            self.quality=50 
+
         
