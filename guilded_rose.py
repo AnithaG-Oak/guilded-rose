@@ -30,14 +30,16 @@ class Item:
         self.sell_in = self.sell_in - 1 
 
     def update_quality(self):
-        if self.quality > 0:
+        if self.sell_in >= 0:
             self.quality = self.quality - 1 
-        if self.sell_in < 0 and self.quality > 0:
-            self.quality = self.quality - 1  
+        else:
+            self.quality = self.quality - 2
     
     def check_quality_limit(self):
         if self.quality>50:
             self.quality=50
+        if self.quality < 0:
+            self.quality = 0
 
 
 
@@ -47,18 +49,20 @@ class Sulphuras(Item):
     
 class AgedBrie(Item):
     def update_quality(self):
-        self.quality = self.quality + 1
-        if self.sell_in < 0:
-            self.quality = self.quality + 1 
+        if self.sell_in >= 0:
+            self.quality = self.quality + 1
+        else:
+            self.quality = self.quality + 2
         
 
 class BackstagePasses(Item):
     def update_quality(self):
-        self.quality = self.quality + 1
-        if self.sell_in < 10:
+        if self.sell_in >= 10:
             self.quality = self.quality + 1
-        if self.sell_in < 5:
-            self.quality = self.quality + 1  
-        if self.sell_in < 0:
+        elif self.sell_in in range(5,10): 
+            self.quality = self.quality + 2
+        elif self.sell_in in range(0,5): 
+            self.quality = self.quality + 3
+        elif self.sell_in < 0:
             self.quality = 0 
         
