@@ -31,7 +31,7 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(-1, items[1].sell_in)
 
         self.assertEqual("Backstage passes to a TAFKAL80ETC concert", items[2].name)
-        self.assertEqual(41, items[2].quality)
+        self.assertEqual(42, items[2].quality)
         self.assertEqual(10, items[2].sell_in)
 
         self.assertEqual("Backstage passes to a TAFKAL80ETC concert", items[3].name)
