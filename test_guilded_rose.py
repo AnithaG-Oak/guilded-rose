@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 import unittest
-from guilded_rose import Item, update_quality
+from guilded_rose import Item, SulphurasItem, update_quality
 
 
 class GildedRoseTest(unittest.TestCase):
     def test_sulfuras_quality(self):
         items = [
-                Item("Sulfuras, Hand of Ragnaros", 2, 80),
-                Item("Sulfuras, Hand of Ragnaros", 2, 60)
+                SulphurasItem("Sulfuras, Hand of Ragnaros", 2, 80),
+                SulphurasItem("Sulfuras, Hand of Ragnaros", 2, 60)
                 ]
         update_quality(items)
         self.assertEqual("Sulfuras, Hand of Ragnaros", items[0].name)
