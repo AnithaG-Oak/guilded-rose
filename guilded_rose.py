@@ -26,11 +26,8 @@ class Item:
     def update(self):
     
         self.sell_in = self.sell_in - 1    
-        if self.name == "Aged Brie":
-            self.quality = self.quality + 1
-            if self.sell_in < 0:
-                self.quality = self.quality + 1 
-        elif self.name == "Backstage passes to a TAFKAL80ETC concert":
+        
+        if self.name == "Backstage passes to a TAFKAL80ETC concert":
             self.quality = self.quality + 1
             if self.sell_in < 10:
                 self.quality = self.quality + 1
@@ -48,7 +45,18 @@ class Item:
             self.quality=50 
 
 
-class SulphurasItem(Item):
+class Sulphuras(Item):
     
     def update(self):
         return
+    
+class AgedBrie(Item):
+    def update(self):
+        self.sell_in = self.sell_in - 1
+        self.quality = self.quality + 1
+        if self.sell_in < 0:
+            self.quality = self.quality + 1 
+        
+        if self.quality>50:
+            self.quality=50 
+        

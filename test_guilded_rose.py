@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 import unittest
-from guilded_rose import Item, SulphurasItem, update_quality
+from guilded_rose import AgedBrie, Item, Sulphuras, update_quality
 
 
 class GildedRoseTest(unittest.TestCase):
     def test_sulfuras_quality(self):
         items = [
-                SulphurasItem("Sulfuras, Hand of Ragnaros", 2, 80),
-                SulphurasItem("Sulfuras, Hand of Ragnaros", 2, 60)
+                Sulphuras("Sulfuras, Hand of Ragnaros", 2, 80),
+                Sulphuras("Sulfuras, Hand of Ragnaros", 2, 60)
                 ]
         update_quality(items)
         self.assertEqual("Sulfuras, Hand of Ragnaros", items[0].name)
@@ -84,10 +84,10 @@ class GildedRoseTest(unittest.TestCase):
 
     def test_aged_brie_quality(self):
         items = [
-            Item("Aged Brie", 5, 40),
-            Item("Aged Brie", 0, 20),
-            Item("Aged Brie", 0, 50),
-            Item("Aged Brie", -1, 49),
+            AgedBrie("Aged Brie", 5, 40),
+            AgedBrie("Aged Brie", 0, 20),
+            AgedBrie("Aged Brie", 0, 50),
+            AgedBrie("Aged Brie", -1, 49),
         ]
         update_quality(items)
         self.assertEqual("Aged Brie", items[0].name)
