@@ -44,23 +44,18 @@ class Item:
 
 
 class Sulphuras(Item):
-    
     def update(self):
         return
     
 class AgedBrie(Item):
-    def update(self):
-        self.sell_in = self.sell_in - 1
+    def update_quantity(self):
         self.quality = self.quality + 1
         if self.sell_in < 0:
             self.quality = self.quality + 1 
         
-        if self.quality>50:
-            self.quality=50 
 
 class BackstagePasses(Item):
-    def update(self):
-        self.sell_in = self.sell_in - 1
+    def update_quantity(self):
         self.quality = self.quality + 1
         if self.sell_in < 10:
             self.quality = self.quality + 1
@@ -68,8 +63,4 @@ class BackstagePasses(Item):
             self.quality = self.quality + 1  
         if self.sell_in < 0:
             self.quality = 0 
-
-        if self.quality>50:
-            self.quality=50 
-
         
