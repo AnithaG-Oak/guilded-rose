@@ -10,11 +10,12 @@ class ItemName(str,Enum):
 
 def update_quality(items):
     for item in items:
-        if item.name != ItemName.SULFURAS.value:
-            item.sell_in = item.sell_in - 1
+        
         # Normal Item
         if item.name not in [ItemName.AGED_BRIE.value, ItemName.BACKSTAGE_TAFKAL80ETC.value, ItemName.SULFURAS.value]:
             if item.quality > 0:
+                item.quality = item.quality - 1
+            if item.sell_in <= 0 and item.quality > 0:
                 item.quality = item.quality - 1
         else:
             # Special Item
@@ -29,15 +30,12 @@ def update_quality(items):
                     if item.sell_in < 0:
                         item.quality = 0
         
-        
+        if item.name != ItemName.SULFURAS.value:
+            item.sell_in = item.sell_in - 1
 
         if item.name == ItemName.AGED_BRIE.value:
             if item.quality < 50 and item.sell_in < 0:
                 item.quality = item.quality + 1
-         
-        if item.name not in [ItemName.AGED_BRIE.value, ItemName.BACKSTAGE_TAFKAL80ETC.value, ItemName.SULFURAS.value]:
-            if item.sell_in < 0 and item.quality > 0:
-                item.quality = item.quality - 1
 
                 
     return items
