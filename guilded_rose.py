@@ -10,18 +10,7 @@ def update_quality(items):
     return items
 
 
-class SulphurasItem:
-    def __init__(self, name, sell_in, quality):
-        self.name = name
-        self.sell_in = sell_in
-        self.quality = quality
-    
-    
-    def __repr__(self):
-        return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
-    
-    def update(self):
-        return
+
 
 class Item:
     def __init__(self, name, sell_in, quality):
@@ -57,3 +46,9 @@ class Item:
              
         if self.quality>50:
             self.quality=50 
+
+
+class SulphurasItem(Item):
+    
+    def update(self):
+        return
