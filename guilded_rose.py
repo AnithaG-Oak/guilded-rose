@@ -24,17 +24,23 @@ class Item:
         return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
     
     def update(self):
-    
-        self.sell_in = self.sell_in - 1    
-        
-        
+        self.update_sell_in()
+        self.update_quantity()
+        self.check_quantity_limit()
+
+    def update_sell_in(self):
+        self.sell_in = self.sell_in - 1 
+
+    def update_quantity(self):
         if self.quality > 0:
             self.quality = self.quality - 1 
         if self.sell_in < 0 and self.quality > 0:
-            self.quality = self.quality - 1 
-             
+            self.quality = self.quality - 1  
+    
+    def check_quantity_limit(self):
         if self.quality>50:
-            self.quality=50 
+            self.quality=50
+
 
 
 class Sulphuras(Item):
