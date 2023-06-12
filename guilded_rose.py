@@ -3,14 +3,12 @@
 
 
 def update_quality(items):
-    
     for item in items:
         item.update()
 
-    return items
 
-
-
+MAX_QUALITY_LIMIT=50
+MIN_QUALITY_LIMIT=0
 
 class Item:
     def __init__(self, name, sell_in, quality):
@@ -36,16 +34,11 @@ class Item:
             self.quality = self.quality - 2
     
     def check_quality_limit(self):
-        if self.quality>50:
-            self.quality=50
-        if self.quality < 0:
-            self.quality = 0
+        if self.quality>MAX_QUALITY_LIMIT:
+            self.quality=MAX_QUALITY_LIMIT
+        if self.quality < MIN_QUALITY_LIMIT:
+            self.quality = MIN_QUALITY_LIMIT
 
-
-
-class Sulphuras(Item):
-    def update(self):
-        return
     
 class AgedBrie(Item):
     def update_quality(self):
@@ -54,7 +47,6 @@ class AgedBrie(Item):
         else:
             self.quality = self.quality + 2
         
-
 class BackstagePasses(Item):
     def update_quality(self):
         if self.sell_in >= 10:
@@ -65,4 +57,15 @@ class BackstagePasses(Item):
             self.quality = self.quality + 3
         elif self.sell_in < 0:
             self.quality = 0 
+
+class Sulphuras(Item):
+    def update(self):
+        return
+    
+class Conjured(Item):
+    def update_quality(self):
+        if self.sell_in >= 0:
+            self.quality = self.quality - 2 
+        else:
+            self.quality = self.quality - 4
         

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import unittest
-from guilded_rose import AgedBrie, BackstagePasses, Item, Sulphuras, update_quality
+from guilded_rose import AgedBrie, BackstagePasses, Conjured, Item, Sulphuras, update_quality
 
 
 class GildedRoseTest(unittest.TestCase):
@@ -106,6 +106,34 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(50, items[3].quality)
         self.assertEqual(-2, items[3].sell_in)
 
+    def test_conjured_item_quantity(self):
+        items = [
+            Conjured("Conjured", 5, 40),
+            Conjured("Conjured", 0, 30),
+            Conjured("Conjured", -1, 28),
+            Conjured("Conjured", 1, 0),
+            Conjured("Conjured", -1, 1),
+        ]
+        update_quality(items)
+        self.assertEqual("Conjured", items[0].name)
+        self.assertEqual(38, items[0].quality)
+        self.assertEqual(4, items[0].sell_in)
+
+        self.assertEqual("Conjured", items[1].name)
+        self.assertEqual(26, items[1].quality)
+        self.assertEqual(-1, items[1].sell_in)
+
+        self.assertEqual("Conjured", items[2].name)
+        self.assertEqual(24, items[2].quality)
+        self.assertEqual(-2, items[2].sell_in)
+
+        self.assertEqual("Conjured", items[3].name)
+        self.assertEqual(0, items[3].quality)
+        self.assertEqual(0, items[3].sell_in)
+
+        self.assertEqual("Conjured", items[4].name)
+        self.assertEqual(0, items[4].quality)
+        self.assertEqual(-2, items[4].sell_in)
 
 if __name__ == "__main__":
     unittest.main()
