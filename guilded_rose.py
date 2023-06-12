@@ -5,31 +5,10 @@
 def update_quality(items):
     
     for item in items:
-        if item.name == "Sulfuras, Hand of Ragnaros":
-            continue
-        item.sell_in = item.sell_in - 1    
-        if item.name == "Aged Brie":
-            item.quality = item.quality + 1
-            if item.sell_in < 0:
-                item.quality = item.quality + 1 
-        elif item.name == "Backstage passes to a TAFKAL80ETC concert":
-            item.quality = item.quality + 1
-            if item.sell_in < 10:
-                item.quality = item.quality + 1
-            if item.sell_in < 5:
-                item.quality = item.quality + 1  
-            if item.sell_in < 0:
-                item.quality = 0 
-        else: 
-            if item.quality > 0:
-                item.quality = item.quality - 1 
-            if item.sell_in < 0 and item.quality > 0:
-                item.quality = item.quality - 1 
-             
-        if item.quality>50:
-            item.quality=50 
+        item.update()
 
     return items
+
 
 
 class Item:
@@ -37,6 +16,33 @@ class Item:
         self.name = name
         self.sell_in = sell_in
         self.quality = quality
+    
+    
 
     def __repr__(self):
         return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
+    
+    def update(self):
+        if self.name == "Sulfuras, Hand of Ragnaros":
+            return
+        self.sell_in = self.sell_in - 1    
+        if self.name == "Aged Brie":
+            self.quality = self.quality + 1
+            if self.sell_in < 0:
+                self.quality = self.quality + 1 
+        elif self.name == "Backstage passes to a TAFKAL80ETC concert":
+            self.quality = self.quality + 1
+            if self.sell_in < 10:
+                self.quality = self.quality + 1
+            if self.sell_in < 5:
+                self.quality = self.quality + 1  
+            if self.sell_in < 0:
+                self.quality = 0 
+        else: 
+            if self.quality > 0:
+                self.quality = self.quality - 1 
+            if self.sell_in < 0 and self.quality > 0:
+                self.quality = self.quality - 1 
+             
+        if self.quality>50:
+            self.quality=50 
